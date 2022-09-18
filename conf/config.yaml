@@ -1,0 +1,4 @@
+env: debug
+app: state-machine
+version: v0.01
+port: 9999

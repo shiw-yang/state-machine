@@ -1,0 +1,14 @@
+{
+    // 个人使用的vscode 配置，仅供参考
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "state machine",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/cmd/main.go",
+            "args": ["-c","../conf/config.yaml"]
+        }
+    ]
+}
