@@ -25,6 +25,19 @@ func Init(configFile string) {
 	Configure.GetConfigure()
 
 	// Logger Init
+	loggerInit()
+}
+
+func (s *ServiceConfig) GetConfigure() {
+	err := viper.Unmarshal(s)
+	if err != nil {
+		panic(err)
+	}
+	s.Port = ":" + s.Port
+}
+
+func loggerInit() {
+
 	level, err := logrus.ParseLevel(Configure.Env)
 	if err != nil {
 		panic(err)
@@ -34,12 +47,4 @@ func Init(configFile string) {
 	logConf.Formatter.(*logrus.TextFormatter).DisableTimestamp = true
 	logrus.SetFormatter(logConf.Formatter)
 	logrus.Infof("%v %v Logger Start", Configure.App, Configure.Version)
-}
-
-func (s *ServiceConfig) GetConfigure() {
-	err := viper.Unmarshal(s)
-	if err != nil {
-		panic(err)
-	}
-	s.Port = ":" + s.Port
 }

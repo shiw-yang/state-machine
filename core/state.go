@@ -1,24 +1,11 @@
 package core
 
-type TaskStatus interface {
-	GetFaild() TaskStatus
-	GetFinished() TaskStatus
-}
-
-type DefaultTaskState int
+type TaskStatus int
 
 const (
-	FAILED DefaultTaskState = -1
-	NEW    DefaultTaskState = iota
+	FAILED TaskStatus = -1
+	NEW    TaskStatus = iota
 	CHECKING
 	WORKING
 	FINISHED
 )
-
-func (state DefaultTaskState) GetFaild() TaskStatus {
-	return FAILED
-}
-
-func (state DefaultTaskState) GetFinished() TaskStatus {
-	return FINISHED
-}
